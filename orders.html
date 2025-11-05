@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Orders — AutoIron Depot</title>
+  <script>
+    // Refresh button functionality
+document.addEventListener("DOMContentLoaded", () => {
+  const refreshBtn = document.getElementById("refresh-btn");
+  const orderList = document.getElementById("order-list");
+
+  refreshBtn.addEventListener("click", () => {
+    refreshBtn.textContent = "Refreshing...";
+    refreshBtn.disabled = true;
+
+    setTimeout(() => {
+      const newOrder = document.createElement("li");
+      newOrder.innerHTML = `Order #${Math.floor(Math.random() * 1000) + 1022} — <span class="status pending">Pending</span>`;
+      orderList.prepend(newOrder);
+
+      refreshBtn.textContent = "Refresh Orders";
+      refreshBtn.disabled = false;
+    }, 1200);
+  });
+});
+
+// Logout confirmation
+function logout() {
+  if (confirm("Kya aap sach mein logout karna chahte hain?")) {
+    window.location.href = "../index.html";
+  }
+}
+  </script>
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #fafafa;
+}
+
+/* Header */
+header {
+  background: #1c1c1c;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo svg {
+  width: 28px;
+  height: 28px;
+}
+
+.brand {
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.logout {
+  background: #ff3d00;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.logout:hover {
+  background: #e63a00;
+}
+
+/* Layout */
+main {
+  display: flex;
+  min-height: 80vh;
+}
+
+/* Sidebar */
+nav {
+  width: 220px;
+  background: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-right: 2px solid #ddd;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  padding: 10px;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background: #ff9f1c;
+  color: white;
+}
+
+nav a.active {
+  background: #ff9f1c;
+  color: white;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  padding: 30px;
+}
+
+.content h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#order-list {
+  list-style: none;
+  margin: 20px 0;
+}
+
+#order-list li {
+  background: #fff8ec;
+  border: 1px solid #ffd38a;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status {
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.pending {
+  color: #ff9f1c;
+}
+
+.shipped {
+  color: #007bff;
+}
+
+.delivered {
+  color: #2ecc71;
+}
+
+/* Button */
+#refresh-btn {
+  padding: 10px 18px;
+  background: #1c1c1c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#refresh-btn:hover {
+  background: #ff9f1c;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background: #1c1c1c;
+  color: white;
+  padding: 10px;
+}
+</style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M3 12h18" stroke="#ffd38a" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M7 6v12" stroke="#ff9f1c" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M17 6v12" stroke="#ff3d00" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <div class="brand">AutoIron Depot</div>
+    </div>
+    <button class="logout" onclick="logout()">Logout</button>
+  </header>
+
+  <main>
+    <nav>
+      <a href="../dashboard.html">Dashboard</a>
+      <a href="#" class="active">Orders</a>
+      <a href="../inventory/index.html">Inventory</a>
+      <a href="../invoices/index.html">Invoices</a>
+      <a href="../clients/index.html">Clients</a>
+      <a href="../settings/index.html">Settings</a>
+    </nav>
+
+    <div class="content">
+      <h2>Orders</h2>
+      <p>Yahan aapko saare customer orders dikhaye jaayenge.</p>
+
+      <ul id="order-list">
+        <li>Order #1021 — <span class="status pending">Pending</span></li>
+        <li>Order #1019 — <span class="status shipped">Shipped</span></li>
+        <li>Order #1017 — <span class="status delivered">Delivered</span></li>
+      </ul>
+
+      <button id="refresh-btn">Refresh Orders</button>
+    </div>
+  </main>
+
+  <footer>© 2025 AutoIron Depot</footer>
+</body>
+</html>

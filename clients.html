@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Clients — AutoIron Depot</title>
+
+  <!-- Extra Compact CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f7fa;
+      color: #333;
+      font-size: 13px;
+    }
+
+    header {
+      background: #1e293b;
+      color: white;
+      padding: 8px 15px;
+      font-size: 1em;
+      text-align: center;
+    }
+
+    nav {
+      background: #334155;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 6px 10px;
+      display: inline-block;
+      transition: background 0.3s;
+      font-size: 13px;
+    }
+
+    nav a:hover {
+      background: #475569;
+    }
+
+    nav a.active {
+      background: #0ea5e9;
+      font-weight: bold;
+    }
+
+    .content {
+      padding: 10px 20px;
+      max-width: 700px;
+      margin: 10px auto;
+      background: white;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      border-radius: 5px;
+    }
+
+    h2 {
+      color: #0f172a;
+      margin-bottom: 6px;
+      font-size: 1.1em;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+
+    table th, table td {
+      border: 1px solid #cbd5e1;
+      padding: 5px 6px;
+      text-align: left;
+    }
+
+    table th {
+      background: #e2e8f0;
+    }
+
+    footer {
+      background: #1e293b;
+      color: white;
+      text-align: center;
+      padding: 8px 0;
+      margin-top: 15px;
+      font-size: 12px;
+    }
+
+    .btn {
+      background: #0ea5e9;
+      color: white;
+      border: none;
+      padding: 3px 6px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 11px;
+    }
+
+    .btn:hover {
+      background: #0284c7;
+    }
+  </style>
+</head>
+
+<body>
+  <header>AutoIron Depot</header>
+
+  <main>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="invoices.html">Invoices</a>
+      <a href="clients.html" class="active">Clients</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+
+    <div class="content">
+      <h2>Clients</h2>
+      <p>Client records and contact details appear here.</p>
+
+      <table id="clientTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- JavaScript will fill rows -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer>© 2025 AutoIron Depot</footer>
+
+  <!-- JavaScript -->
+  <script>
+    const clients = [
+      { id: 1, name: "John Doe", company: "IronWorks Ltd", email: "john@ironworks.com", phone: "123-456-7890" },
+      { id: 2, name: "Sara Khan", company: "SteelCraft Co", email: "sara@steelcraft.com", phone: "987-654-3210" },
+      { id: 3, name: "Mark Smith", company: "MetalFab Inc", email: "mark@metalfab.com", phone: "555-222-3333" },
+    ];
+
+    const tbody = document.querySelector("#clientTable tbody");
+
+    clients.forEach(client => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${client.id}</td>
+        <td>${client.name}</td>
+        <td>${client.company}</td>
+        <td>${client.email}</td>
+        <td>${client.phone}</td>
+        <td><button class="btn" onclick="viewClient(${client.id})">View</button></td>
+      `;
+      tbody.appendChild(row);
+    });
+
+    function viewClient(id) {
+      const client = clients.find(c => c.id === id);
+      alert("Client: " + client.name + "\nCompany: " + client.company + "\nEmail: " + client.email + "\nPhone: " + client.phone);
+    }
+  </script>
+</body>
+</html>

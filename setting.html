@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Settings — AutoIron Depot</title>
+
+  <!-- Compact CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f7fa;
+      color: #333;
+      font-size: 13px;
+    }
+
+    header {
+      background: #1e293b;
+      color: white;
+      padding: 8px 15px;
+      font-size: 1em;
+      text-align: center;
+    }
+
+    nav {
+      background: #334155;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 6px 10px;
+      display: inline-block;
+      transition: background 0.3s;
+      font-size: 13px;
+    }
+
+    nav a:hover {
+      background: #475569;
+    }
+
+    nav a.active {
+      background: #0ea5e9;
+      font-weight: bold;
+    }
+
+    .content {
+      padding: 10px 20px;
+      max-width: 600px;
+      margin: 10px auto;
+      background: white;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      border-radius: 5px;
+    }
+
+    h2 {
+      color: #0f172a;
+      margin-bottom: 6px;
+      font-size: 1.1em;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    input, select {
+      padding: 5px 6px;
+      font-size: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+    }
+
+    .btn {
+      background: #0ea5e9;
+      color: white;
+      border: none;
+      padding: 5px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      width: fit-content;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #0284c7;
+    }
+
+    footer {
+      background: #1e293b;
+      color: white;
+      text-align: center;
+      padding: 8px 0;
+      margin-top: 15px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>AutoIron Depot</header>
+
+  <main>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="invoices.html">Invoices</a>
+      <a href="clients.html">Clients</a>
+      <a href="settings.html" class="active">Settings</a>
+    </nav>
+
+    <div class="content">
+      <h2>Settings</h2>
+      <p>Manage account, password, and system preferences here.</p>
+
+      <form id="settingsForm">
+        <label for="username">Account Name:</label>
+        <input type="text" id="username" placeholder="Enter your name" required />
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" placeholder="you@example.com" required />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter new password" required />
+
+        <label for="theme">Theme Preference:</label>
+        <select id="theme">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+
+        <button type="submit" class="btn">Save Settings</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>© 2025 AutoIron Depot</footer>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById("settingsForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("username").value;
+      const email = document.getElementById("email").value;
+      const theme = document.getElementById("theme").value;
+
+      alert(`Settings saved!\n\nName: ${name}\nEmail: ${email}\nTheme: ${theme}`);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Invoices — AutoIron Depot</title>
+
+  <!-- Compact CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f7fa;
+      color: #333;
+      font-size: 14px;
+    }
+
+    header {
+      background: #1e293b;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      text-align: center;
+    }
+
+    nav {
+      background: #334155;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      display: inline-block;
+      transition: background 0.3s;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      background: #475569;
+    }
+
+    nav a.active {
+      background: #0ea5e9;
+      font-weight: bold;
+    }
+
+    .content {
+      padding: 15px 25px;
+      max-width: 800px;
+      margin: 15px auto;
+      background: white;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+      border-radius: 6px;
+    }
+
+    h2 {
+      color: #0f172a;
+      margin-bottom: 8px;
+      font-size: 1.3em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    table th, table td {
+      border: 1px solid #cbd5e1;
+      padding: 6px 8px;
+      text-align: left;
+    }
+
+    table th {
+      background: #e2e8f0;
+    }
+
+    footer {
+      background: #1e293b;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 20px;
+      font-size: 13px;
+    }
+
+    .btn {
+      background: #0ea5e9;
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .btn:hover {
+      background: #0284c7;
+    }
+  </style>
+</head>
+
+<body>
+  <header>AutoIron Depot</header>
+
+  <main>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="invoices.html" class="active">Invoices</a>
+      <a href="clients.html">Clients</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+
+    <div class="content">
+      <h2>Invoices</h2>
+      <p>List and manage all invoices here.</p>
+      <table id="invoiceTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Client</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- JavaScript will add rows -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer>© 2025 AutoIron Depot</footer>
+
+  <!-- JavaScript -->
+  <script>
+    const invoices = [
+      { id: 101, client: "John Motors", date: "2025-10-20", amount: "$350.00", status: "Paid" },
+      { id: 102, client: "IronWorks Ltd", date: "2025-10-28", amount: "$220.50", status: "Pending" },
+      { id: 103, client: "SteelCraft Co", date: "2025-11-01", amount: "$500.00", status: "Overdue" },
+    ];
+
+    const tbody = document.querySelector("#invoiceTable tbody");
+
+    invoices.forEach(inv => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${inv.id}</td>
+        <td>${inv.client}</td>
+        <td>${inv.date}</td>
+        <td>${inv.amount}</td>
+        <td>${inv.status}</td>
+        <td><button class="btn" onclick="viewInvoice(${inv.id})">View</button></td>
+      `;
+      tbody.appendChild(row);
+    });
+
+    function viewInvoice(id) {
+      alert("Viewing details for Invoice #" + id);
+    }
+  </script>
+</body>
+</html>
